@@ -21,6 +21,7 @@ http.createServer(function(req, res) {
             res.end();
             return;
         }
+        if (fs.statSync(filename).isDirectory()) filename += '/index.html';
         var mimeType = mimeTypes[path.extname(filename).split(".")[1]];
         res.writeHead(200, {'Content-Type':mimeType});
 
