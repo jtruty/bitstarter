@@ -10,6 +10,8 @@ var mimeTypes = {
     "js": "text/javascript",
     "css": "text/css"};
 
+var port = process.env.PORT || 8080;
+
 http.createServer(function(req, res) {
     var uri = url.parse(req.url).pathname;
     var filename = path.join(process.cwd(), uri);
@@ -29,4 +31,4 @@ http.createServer(function(req, res) {
         fileStream.pipe(res);
 
     }); //end path.exists
-}).listen(8080);
+}).listen(port);
